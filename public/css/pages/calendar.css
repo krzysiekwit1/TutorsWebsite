@@ -1,0 +1,88 @@
+:root {
+    --ice-gold: #a0d2eb;
+    --freeze-purple: #e5eaf5;
+    --medium-purple: #d0bdf4;
+    --purple-pain: #8458b3;
+    --heavy-purple: #494d5f;
+}
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #e5eaf5;
+}
+
+.add-event-container {
+    background-color: white;
+    border-radius: 15px;
+    border: 2px solid transparent;
+}
+.add-event-container:hover {
+    border: 2px solid black;
+    border-radius: 15px;
+}
+.add-event-span {
+    margin-left: 25px;
+    font-size: 25px;
+}
+.btn {
+    background-color: #494d5f;
+    border: none;
+}
+.btn:hover {
+    background-color: var(--ice-gold);
+    border: none;
+    color: black;
+}
+.choose-date-span {
+    margin-left: 25px;
+    font-size: 25px;
+}
+.choose-date-container {
+    background-color: white;
+    border-radius: 15px;
+    border: 2px solid transparent;
+}
+.card {
+    background-color: white;
+    border: 2px solid transparent;
+}
+.card:hover {
+    border: 2px solid black;
+}
+.card:hover .card-title {
+    background-color: black;
+    color: white;
+}
+.card-body {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.card-title {
+    font-size: 15px;
+    border-radius: 2px;
+}
+.event-in-card {
+    font-size: 12px;
+    text-align: center;
+    margin-left: 5px;
+    font-family: "Roboto", sans-serif;
+}
+/* scroll bar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* scroll bar */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* scroll bar */
+::-webkit-scrollbar-thumb {
+    background: grey;
+    border-radius: 15px;
+}
+
+/* scroll bar */
+::-webkit-scrollbar-thumb:hover {
+    background: black;
+}

@@ -1,0 +1,141 @@
+:root {
+    --ice-gold: #a0d2eb;
+    --freeze-purple: #e5eaf5;
+    --medium-purple: #d0bdf4;
+    --purple-pain: #8458b3;
+    --heavy-purple: #494d5f;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+.advert {
+    margin-top: 20px;
+    background-color: #eef0f5;
+    border: 3px solid transparent;
+}
+
+.advert:hover {
+    animation: animateAdvert 3s linear forwards;
+}
+@keyframes animateAdvert {
+    0% {
+        border: 3px solid #acafbd;
+    }
+    50% {
+        border: 3px solid #595d6d;
+    }
+    100% {
+        border: 3px solid #494d5f;
+    }
+}
+
+.name {
+    font-size: 25px;
+    font-family: "Roboto", sans-serif;
+}
+.nativ {
+    background-color: var(--ice-gold);
+    font-size: 12px;
+}
+.nativ-language {
+    font-size: 12px;
+}
+.teaches {
+    background-color: var(--ice-gold);
+    font-size: 12px;
+}
+.language {
+    font-size: 12px;
+}
+.description-container {
+    height: 135px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.description {
+    height: 135px;
+    font-size: 14px;
+    overflow: hidden;
+    overflow-x: hidden;
+}
+.price-span {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 15px;
+}
+.price {
+    margin-left: 20px;
+    font-size: 25px;
+}
+.button-contact {
+    color: white;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    text-align: center;
+    width: 200px;
+    margin-left: 20px;
+    margin-top: 15px;
+    background: rgb(88, 183, 200);
+}
+.button-contact:hover {
+    color: black;
+    border-radius: 15px;
+    text-align: center;
+    width: 200px;
+    margin-left: 20px;
+    margin-top: 15px;
+    background: var(--ice-gold);
+}
+.button-profile {
+    color: white;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    text-align: center;
+    width: 200px;
+    margin-left: 20px;
+    margin-top: 15px;
+    background: rgb(136, 67, 192);
+}
+.button-profile:hover {
+    color: black;
+    border-radius: 15px;
+    text-align: center;
+    width: 200px;
+    margin-left: 20px;
+    margin-top: 15px;
+    background: var(--ice-gold);
+}
+#fakeSubmitBtn {
+    display: block;
+    border: 1px solid #494d5f;
+    width: 150px;
+    text-align: center;
+    border-radius: 5px;
+}
+#fakeSubmitBtn:hover {
+    cursor: pointer;
+    background: #494d5f;
+    color: white;
+}
+
+/* scroll bar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* scroll bar */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* scroll bar */
+::-webkit-scrollbar-thumb {
+    background: var(--grey);
+    border-radius: 10px;
+}
+
+/* scroll bar */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--black);
+}

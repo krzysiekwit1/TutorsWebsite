@@ -1,0 +1,15 @@
+:root {
+    --ice-gold: #a0d2eb;
+    --freeze-purple: #e5eaf5;
+    --medium-purple: #d0bdf4;
+    --purple-pain: #8458b3;
+    --heavy-purple: #494d5f;
+}
+.card-header {
+    background-color: var(--ice-gold);
+    color: white;
+}
+.card-body {
+    background-color: var(--heavy-purple);
+    color: white;
+}

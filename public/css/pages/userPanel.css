@@ -1,0 +1,217 @@
+:root {
+    --ice-gold: #a0d2eb;
+    --freeze-purple: #e5eaf5;
+    --medium-purple: #d0bdf4;
+    --purple-pain: #8458b3;
+    --heavy-purple: #494d5f;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #e5eaf5;
+}
+
+.information {
+    text-align: center;
+}
+
+.avatar-input {
+    display: none;
+}
+#avatarInputP {
+    display: block;
+    border: 1px solid #494d5f;
+    width: 150px;
+    text-align: center;
+    border-radius: 5px;
+}
+#avatarInputP:hover {
+    cursor: pointer;
+    background: #494d5f;
+    color: white;
+}
+.row {
+    margin-top: 10px;
+}
+.avatar-image {
+    width: 150px;
+    height: 150px;
+    float: left;
+    margin: auto;
+    display: block;
+    border-radius: 5px;
+}
+.avatar-button {
+    border: 1px solid #494d5f;
+    width: 150px;
+    height: 27.6px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 13px;
+    margin-top: 0px;
+    display: block;
+}
+.avatar-button:hover {
+    cursor: pointer;
+    background: #8458b3;
+    color: white;
+}
+.personal-information {
+    border-bottom: 1px solid grey;
+}
+
+/* Toggle button css */
+.isTutorElementsContainer {
+    margin-left: 3px;
+    margin-top: 3px !important;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 25px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: grey;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 5px;
+    bottom: 2.5px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: var(--ice-gold);
+}
+
+input:checked + .slider:before {
+    transform: translateX(49px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 38px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+/* are you tutor status loader */
+.loading-dual-ring {
+    display: none;
+    margin-left: 10px;
+    width: 25px;
+    height: 25px;
+}
+.loading-dual-ring:after {
+    display: block;
+    content: " ";
+    width: 22px;
+    height: 22px;
+    margin: 2px;
+    border-radius: 50%;
+    border: 3px solid var(--ice-gold);
+    border-color: var(--purple-pain) transparent var(--ice-gold) transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+.update-button {
+    border: 1px solid #494d5f;
+    width: 150px;
+    height: 27.6px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 13px;
+    margin-top: 0px;
+    display: block;
+    margin-left: 15px;
+}
+.update-button:hover {
+    cursor: pointer;
+    background: #8458b3;
+    color: white;
+}
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+#isTutorSuccess {
+    display: none;
+    margin-left: 25px;
+    font-size: 17px;
+    font-weight: bold;
+    color: var(--ice-gold);
+}
+#isTutorError {
+    display: none;
+}
+#birthDateSuccess {
+    display: none;
+    font-size: 17px;
+    font-weight: bold;
+    color: var(--ice-gold);
+    margin-left: 15px;
+}
+#birthDateError {
+    display: none;
+    color: red;
+    font-weight: bold;
+    font-size: 17px;
+    margin-left: 15px;
+}
+#isTutorInformation {
+    margin-top: 8px;
+}
+#birthDateInformation {
+    margin-top: 10px;
+}
+#birthDateInput {
+    border: 1px solid var(--purple-pain);
+    border-radius: 5px;
+    padding: 0px;
+    width: 140px;
+}
+@media screen and (max-width: 600px) {
+    .isTutorElementsContainer {
+        width: 100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #isTutorButton {
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width: 600px) {
+    .birthDateElementsContainer {
+        width: 100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #birthDateButton {
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,132 @@
+:root {
+    --ice-gold: #a0d2eb;
+    --freeze-purple: #e5eaf5;
+    --medium-purple: #d0bdf4;
+    --purple-pain: #8458b3;
+    --heavy-purple: #494d5f;
+}
+body {
+    background-color: white;
+}
+ul {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+.user-wrapper,
+.messages-wrapper {
+    overflow-y: auto;
+    overflow-y: scroll;
+}
+.user-wrapper {
+    height: 600px;
+    background-color: rgb(243, 243, 243);
+}
+.user {
+    cursor: pointer;
+    padding: 5px;
+    position: relative;
+}
+.user:hover {
+    background-color: black;
+}
+.user:last:child {
+    margin-bottom: 0;
+}
+.pending {
+    position: absolute;
+    left: 13px;
+    top: 9px;
+    background: #b600ff;
+    margin: 0;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    padding-left: 5px;
+    color: white;
+    font-size: 12px;
+}
+
+.media-left {
+    margin: 0 10px;
+}
+
+.media-left img {
+    width: 64px;
+    border-radius: 64px;
+}
+.media-body p {
+    margin: 6px 0;
+}
+.messages-wrapper {
+    padding: 10px;
+    height: 543px;
+    background-color: rgb(243, 243, 243);
+    border-radius: 10px;
+}
+.messages .message {
+    margin-bottom: 15px;
+}
+.messages .message:last-child {
+    margin-bottom: 0;
+}
+.received,
+.sent {
+    width: 45%;
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+.received {
+    background-color: white;
+    float: left;
+}
+.sent {
+    background-color: rgb(29, 147, 202);
+    float: right;
+    text-align: right;
+}
+.message p {
+    margin: 5px 0;
+}
+.date {
+    color: #777777;
+    font-size: 12px;
+}
+.active {
+    background: #eeeeee;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 15px 0 0;
+    display: inline-block;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid #eeeeee;
+}
+input[type="text"]:focus {
+    border: 1px solid black;
+}
+::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+}
+
+/* scroll bar */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* scroll bar */
+::-webkit-scrollbar-thumb {
+    background: black;
+}
+
+/* scroll bar */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(66, 181, 185);
+}
