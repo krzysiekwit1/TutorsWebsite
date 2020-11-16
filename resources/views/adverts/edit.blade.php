@@ -110,6 +110,9 @@ width:80%;margin-left:10%;margin-top:10px; ">
         {{FORM::submit('Submit',['class'=>'btn btn-primary','style'=>'font-size: 18px;','hidden','id'=>'editBtn'])}}
         <p id="fakeSubmitBtn">Edit</p>
 
+
+
+
       </div>
       <div class="col-md-4">
         <div class="row">
@@ -223,6 +226,7 @@ width:80%;margin-left:10%;margin-top:10px; ">
     <option value="B2">
     <option value="C1">
     <option value="C2">
+
   </datalist>
 </div>
 <script src="{{asset('js/jqueryUi/external/jquery/jquery.js')}}"></script>

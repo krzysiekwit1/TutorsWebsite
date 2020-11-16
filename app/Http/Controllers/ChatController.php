@@ -110,7 +110,11 @@ public function sendMessage(Request $request){
 
 
 
-
+public function makeContact(Request $request){
+        $id = $request->userId;
+            $data = ['result'=>'success'];
+            return response()->json($data);        
+}
     /*public function ShowSpecificMail($id){
         $authid=Auth::user()->id;
         

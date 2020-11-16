@@ -22,6 +22,7 @@ Route::get('/','PagesController@index');
 
 Route::get('/calendar/{month}/{year}','CalendarController@calendar');
 Route::post('/calendar/{month?}/{year?}','CalendarController@store');
+Route::post('/makeContact','ChatController@makeContact');
 
 Route::get('/SignUp','PagesController@SignUp');
 

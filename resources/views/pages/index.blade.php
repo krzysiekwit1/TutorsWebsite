@@ -82,8 +82,8 @@
 
             </div>
             <div class="row">
-                <a href="http://localhost:8000/messages/create/{{$advert->user_id}}">
-                    <button class="button-contact">Contact</button>
+                <a href="#">
+                    <button id="{{$advert->id}}" class="button-contact">Contact</button>
                 </a>
                 <a href="http://localhost:8000/messages/create/{{$advert->user_id}}">
                     <button class="button-profile">Profile</button>
@@ -98,5 +98,33 @@
 @else
 <p>there is no adverts</p>
 @endif
-
+<script src="{{asset('js/jqueryUi/external/jquery/jquery.js')}}"></script>
+<script src="{{asset('js/jqueryUi/jquery-ui.min.js')}}"></script>
+<script>
+    $(".button-contact").click(function(id){
+        var data ='';
+        var id = $(this).attr("id");
+        console.log(id);
+        var data ={
+        'userId': id
+        };
+    $.ajax({
+    type: "POST",
+    url: '/makeContact',
+    data:data ,
+    success: function(data){
+        if(data.result=='success'){
+        console.log(data);
+        console.log('twoja stara');
+        successFunc();
+    }else{
+        console.log('succes ale error');
+        console.log(data.result);
+        errorFunc();
+    };
+    },
+    error: console.log('error'),
+    });
+    });
+</script>
 @endsection
