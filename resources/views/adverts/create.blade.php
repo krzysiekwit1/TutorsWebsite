@@ -15,6 +15,13 @@
       {{Form::text('nativ_language_1','',['class'=>'form-control','list'=>'languageList','style'=>'font-size: 18px;','id'=>'nativLanguage1','placeholder'=>'e.g. Polish'])}}
       {{Form::label('nativ_language_2','Nativ Language 2')}}
       {{Form::text('nativ_language_2','',['class'=>'form-control','list'=>'languageList','style'=>'font-size: 18px;','id'=>'nativLanguage2','placeholder'=>'e.g. Polish'])}}
+      <!-- -->
+      {{Form::label('country','Country')}}
+      {{Form::text('country','',/*,$advert->country ,*/['class'=>'form-control','list'=>'countryList','style'=>'font-size: 18px;','id'=>'country','placeholder'=>'e.g. Poland'])}}
+      {{Form::label('city','City')}}
+      {{Form::text('city','',/*,$advert->city ,*/['class'=>'form-control','style'=>'font-size: 18px;','id'=>'city','placeholder'=>'e.g. Warsaw'])}}
+
+      <!-- -->
       {{Form::label('price','Price per lessons and currnecy sign')}}
       {{Form::text('price','',['class'=>'form-control','style'=>'font-size: 18px;','id'=>'price','placeholder'=>'e.g. 40$'])}}
       <div class="row"></div>

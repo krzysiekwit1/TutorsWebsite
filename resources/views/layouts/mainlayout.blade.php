@@ -41,12 +41,13 @@
         integrity="sha512-2JBCbWoMJPH+Uj7Wq5OLub8E5edWHlTM4ar/YJkZh3plwB2INhhOC3eDoqHm1Za/ZOSksrLlURLoyXVdfQXqwg=="
         crossorigin="anonymous"></script>
 
-    <nav class="navbar navbar-expand-lg navbar-expand-md navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-expand  navbar-dark">
         <div class="container">
             <a href="/" class="navbar-brand">TutorWebsite</a>
 
 
             <div id="main-nav" class="collapse navbar-collapse">
+
 
                 <!-- test -->
                 <div style="color:white;" class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -103,7 +104,7 @@
         </div>
     </nav>
 
-    <div class="container" style="margin-bottom:9rem;"></div>
+    <div id="topGap" class="container" style="margin-bottom:9rem;"></div>
 
     @yield('content')
 

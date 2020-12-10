@@ -9,7 +9,7 @@
 width:80%;margin-left:10%;margin-top:10px; ">
 
   <div class="col-md-3 col-xl-3">
-    <img src="{{asset('/'.$user->avatar)}}" alt="">
+    <img class="img-fluid" src="{{asset('/'.$user->avatar)}}" alt="">
 
   </div>
 
@@ -102,10 +102,15 @@ width:80%;margin-left:10%;margin-top:10px; ">
         {{Form::text('nativ_language_1',$advert->nativ_language_1,['class'=>'form-control','list'=>'languageList','style'=>'font-size: 18px;','id'=>'nativLanguage1','placeholder'=>'e.g. Polish'])}}
         {{Form::label('nativ_language_2','Nativ language 2')}}
         {{Form::text('nativ_language_2',$advert->nativ_language_2,['class'=>'form-control','list'=>'languageList','style'=>'font-size: 18px;','id'=>'nativLanguage2','placeholder'=>'e.g. Polish'])}}
+
+        <!-- -->
+        {{Form::label('country','Country')}}
+        {{Form::text('country',$advert->country ,['class'=>'form-control','list'=>'countryList','style'=>'font-size: 18px;','id'=>'country','placeholder'=>'e.g. Poland'])}}
+        {{Form::label('city','City')}}
+        {{Form::text('city',$advert->city ,['class'=>'form-control','style'=>'font-size: 18px;','id'=>'city','placeholder'=>'e.g. Warsaw'])}}
+        <!-- -->
         {{Form::label('price','Price for 1 lesson and currency sign')}}
         {{Form::text('price',$advert->price,['class'=>'form-control','style'=>'font-size: 18px;','id'=>'price','placeholder'=>'e.g. 40$'])}}
-        <div class="row"></div>
-        <div class="row"></div>
         {{FORM::hidden('_method','PUT')}}
         {{FORM::submit('Submit',['class'=>'btn btn-primary','style'=>'font-size: 18px;','hidden','id'=>'editBtn'])}}
         <p id="fakeSubmitBtn">Edit</p>
@@ -218,6 +223,43 @@ width:80%;margin-left:10%;margin-top:10px; ">
     <option value="Turkish">
     <option value="Ukrainian">
     <option value="Vietnamese">
+  </datalist>
+  <datalist id="countryList">
+    <option value="Arabia">
+    <option value="Bulgaria">
+    <option value="Cambodia">
+    <option value="China">
+    <option value="Croatia">
+    <option value="Czech Republic">
+    <option value="Denmark">
+    <option value="England">
+    <option value="Estonia">
+    <option value="France">
+    <option value="Georgia">
+    <option value="Germany">
+    <option value="Greece">
+    <option value="Hungary">
+    <option value="Iceland">
+    <option value="Ireland">
+    <option value="Italy">
+    <option value="Japan">
+    <option value="Korea">
+    <option value="Latvia">
+    <option value="Lithuania">
+    <option value="Mongolia">
+    <option value="Norway">
+    <option value="Poland">
+    <option value="Portugal">
+    <option value="Romania">
+    <option value="Russia">
+    <option value="Serbia">
+    <option value="Slovakia">
+    <option value="Spain">
+    <option value="Sweden">
+    <option value="Thailand">
+    <option value="Turkey">
+    <option value="Ukraine">
+    <option value="Vietnam">
   </datalist>
   <datalist id="languageLevelList">
     <option value="A1">

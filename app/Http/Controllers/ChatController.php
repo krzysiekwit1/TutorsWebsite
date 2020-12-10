@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Advert;
+
 use App\Models\Message;
 use App\Models\Contact;
 use DB;
@@ -111,9 +113,45 @@ public function sendMessage(Request $request){
 
 
 public function makeContact(Request $request){
-        $id = $request->userId;
+    if($authId = Auth::id()){
+
+        $contactToId = $request->userId;
+        if($contactToId==$authId){
+            $data = ['result'=>'AuthIdSameAsContactTo'];
+            return response()->json($data);
+        }
+        //
+        $contactExists = Contact::where( function ($query) use ($authId , $contactToId) {
+            $query
+            ->where('user_id_1','=',$authId)
+            ->where('user_id_2','=',$contactToId);
+        })
+        ->orWhere( function ($query) use ($authId , $contactToId){
+            $query
+            ->where('user_id_2','=',$authId)
+            ->where('user_id_1','=',$contactToId);
+        })
+        ->get();
+        //
+        if($contactExists->isEmpty()){
+
+        $contact = new Contact;
+        $contact->user_id_1 =$authId;
+        $contact->user_id_2 =$contactToId;
+        $contact->save();
+
             $data = ['result'=>'success'];
-            return response()->json($data);        
+            return response()->json($data);
+        }
+        if($contactExists->isNotEmpty()){
+            $data = ['result'=>'contactExists'];
+            return response()->json($data);
+        }
+
+        $data = ['result'=>'error'];
+        return response()->json($data);
+
+    }        
 }
     /*public function ShowSpecificMail($id){
         $authid=Auth::user()->id;

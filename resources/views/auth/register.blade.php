@@ -17,7 +17,7 @@
 
                         <div class="form-group row">
                             <label for="name"
-                                class="col-md-4 col-form-label text-md-right">{{ __('Imie i nazwisko') }}</label>
+                                class="col-md-4 col-form-label text-md-right">{{ __('Firstname and Lastname') }}</label>
 
                             <div class="col-md-6">
                                 <input style="font-size:18px;" id="name" type="text"
@@ -35,8 +35,7 @@
                         <!--email-->
 
                         <div class="form-group row">
-                            <label for="email"
-                                class="col-md-4 col-form-label text-md-right">{{ __('Adres email') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
 
                             <div class="col-md-6">
                                 <input style="font-size:18px;" id="email" type="email"
@@ -55,7 +54,7 @@
 
                         <div class="form-group row">
                             <label for="password"
-                                class="col-md-4 col-form-label text-md-right">{{ __('Hasło') }}</label>
+                                class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
                                 <input style="font-size:18px;" id="password" type="password"
@@ -73,7 +72,7 @@
 
                         <div class="form-group row">
                             <label for="password-confirm"
-                                class="col-md-4 col-form-label text-md-right">{{ __('Potwierdź hasło') }}</label>
+                                class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
                                 <input style="font-size:18px;" id="password-confirm" type="password"
@@ -84,7 +83,7 @@
                         <!-- regulations accept-->
                         <div class="form-group row">
                             <label for="checkbox-regulations"
-                                class="col-md-4 col-form-label text-md-right">{{ __('Regulamin') }}</label>
+                                class="col-md-4 col-form-label text-md-right">{{ __('Regulations') }}</label>
 
                             <div class="col-md-6">
                                 <input style="font-size:18px;" name="regulations" style="width:22px;height:22px;"
@@ -100,7 +99,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Rejestracja') }}
+                                    {{ __('Register') }}
                                 </button>
                             </div>
                         </div>

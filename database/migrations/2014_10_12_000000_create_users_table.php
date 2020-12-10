@@ -16,10 +16,10 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->collation = 'utf8mb4_unicode_ci';	
             $table->increments('id');
-            $table->string('avatar')->default('/avatars/default.jpg');
+            $table->string('avatar')->default('avatars/default.jpg');
             $table->string('name',45);
             $table->string('email');
-            $table->boolean('is_tutor');
+            $table->boolean('is_tutor')->default('0');
             $table->date('birth_date')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password',150);

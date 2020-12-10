@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Advert;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use DB;
+
 
 class AdvertsController extends Controller
 {
@@ -52,6 +54,10 @@ class AdvertsController extends Controller
         $advert->name =$request->input('name');
         $advert->nativ_language_1 =$request->input('nativ_language_1');
         $advert->nativ_language_2 =$request->input('nativ_language_2');
+
+        $advert->country =$request->input('country');
+        $advert->city =$request->input('city');
+
         $advert->price =$request->input('price');
         $advert->description=$request->input('description');
         $advert->language_1 =$request->input('language_1');
@@ -79,8 +85,9 @@ class AdvertsController extends Controller
      */
     public function show($id)
     {
-        $advert= Advert::find($id);
-        return view('adverts.show')->with('advert',$advert);
+        $advert= Advert::where('user_id',$id)->first();
+        $avatar = User::select('avatar')->where('id', $advert['user_id'])->first();
+        return view('adverts.show')->with('advert',$advert)->with('avatar',$avatar);
     }
 
     /**
@@ -122,6 +129,9 @@ class AdvertsController extends Controller
         $advert->nativ_language_1 =$request->input('nativ_language_1');
         $advert->nativ_language_2 =$request->input('nativ_language_2');
         $advert->price =$request->input('price');
+                $advert->country =$request->input('country');
+        $advert->city =$request->input('city');
+
         $advert->description=$request->input('description');
         $advert->language_1 =$request->input('language_1');
         $advert->language_2 =$request->input('language_2');

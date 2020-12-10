@@ -17,8 +17,8 @@ class CreateEventsTable extends Migration
             $table->collation = 'utf8mb4_unicode_ci';	
             $table->id();
             $table->string('language');
-            $table->unsignedBigInteger('user_id_1');
-            $table->unsignedBigInteger('user_id_2');
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->dateTime('start',0);
             $table->dateTime('end',0);
             $table->string('accepted');

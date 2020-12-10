@@ -30,8 +30,11 @@ class CreateAdvertsTable extends Migration
             $table->string('language_level_3',3)->nullable();
             $table->string('language_level_4',3)->nullable();
             $table->string('language_level_5',3)->nullable();
+            $table->string('country',20)->nullable();
+            $table->string('city',20)->nullable();
+
             $table->longText('description');
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
             
         });
