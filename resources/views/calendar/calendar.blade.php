@@ -35,30 +35,71 @@ function showEvents($tutorEvent,$day,$choosedMonth,$choosedYear){
 ?>
 @section('content')
 @include('errorMessage');
+<div class="calendar-navbar container">
+  <div class="row">
+    <button id="addEventButton1" class="btn btn-primary" style="font-size:18px;">Add lesson </button>
+    <button id="addEventButton2" class="btn btn-primary" style="font-size:18px;display:none;" ">Add lesson
+    </button>
+    <label class=" choose-month-label" for=" month">Choose month</label>
 
-<div class="add-event-container container">
+      <select name="month" id="monthFilter">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+
+      </select>
+      <label class="choose-year-label" for="year">Choose year</label>
+      <select name="year" id="yearFilter">
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+
+      </select>
+  </div>
+</div>
+<div style="display:none;" class="add-event-container container">
   <div class="row">
     <span class="add-event-span">Add Event</span>
   </div>
   {!! Form::open(['action'=>'CalendarController@store','method'=>'POST','style'=>'width:100%;']) !!}
   <div class="row">
     <div class="col-md-2 col-xl-2">
-      {{Form::label('email','Email')}}
-      {{Form::text('email','',['class'=>'form-control','style'=>'font-size: 18px;'])}}
+      <label for="email">Student</label>
+      <select style="font-size:25px;border-radius:3px;border-color:rgb(133, 133, 133)" class="from-control" name="email"
+        id="yearFilter">
+        @foreach ($users as $user)
+        <option value="{{$user->id}}">{{$user->name}}</option>
+        @endforeach
+
+      </select>
     </div>
     <div class="col-md-2 col-xl-2">
-      {{Form::label('language','Język')}}
+      {{Form::label('language','Language')}}
       {{Form::text('language','',['class'=>'form-control','list'=>'languageList','style'=>'font-size: 18px;'])}}
     </div>
     <div class="col-md-2 col-xl-2">
-      {{Form::label('platform','Platforma')}}
+      {{Form::label('platform','Platform')}}
       {{Form::text('platform','',['class'=>'form-control','list'=>'','style'=>'font-size: 18px;'])}}
     </div>
   </div>
   <div class="row">
 
     <div class="col-md-3 col-xl-3">
-      {{Form::label('start','Początek zajęć')}}
+      {{Form::label('start','Start')}}
       <div class="input-group date" id='datetimepicker1' data-target-input="nearest">
         {{Form::text('start','',['class'=>'form-control datetimepicker-input','style'=>'font-size: 18px;','data-target'=>'#datetimepicker1'])}}
         <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
@@ -68,7 +109,7 @@ function showEvents($tutorEvent,$day,$choosedMonth,$choosedYear){
     </div>
 
     <div class="col-md-3 col-xl-3">
-      {{Form::label('end','Początek zajęć')}}
+      {{Form::label('end','End')}}
       <div class="input-group date" id='datetimepicker2' data-target-input="nearest">
         {{Form::text('end','',['class'=>'form-control datetimepicker-input','style'=>'font-size: 18px;','data-target'=>'#datetimepicker2'])}}
         <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
@@ -88,27 +129,7 @@ function showEvents($tutorEvent,$day,$choosedMonth,$choosedYear){
     <br>
   </div>
 </div>
-<div class="choose-date-container container" style="margin-top:15px;">
-  <div class="row">
-    <span class="choose-date-span">Choose Date</span>
-  </div>
-  <div class="row">
-    <div class="col-md-1 col-xl-1">
-      <label style="font-size:10px;" for="choosedMonth"> Choose month</label>
-      <input style="width:100px;font-size:15px;" id="choosedMonth" name="choosedMonth" list="months"
-        class="form-control" type="text" value="{{$choosedMonth}}">
-    </div>
-    <div class="col-md-1 col-xl-1">
-      <label style="font-size:10px;" for="choosedYear">Choose year</label>
-      <input style="width:100px;font-size:15px;" id="choosedYear" list="years" name="choosedYear" class="form-control"
-        type="text" value="{{$choosedYear}}">
 
-    </div>
-    <div class="col-md-4 col-xl-4">
-
-    </div>
-  </div>
-</div>
 <div class="container">
   <div class="row table-row" style="margin-top:20px;">
 
@@ -783,6 +804,11 @@ function showEvents($tutorEvent,$day,$choosedMonth,$choosedYear){
   <option value="Ukraiński">
   <option value="Wietnamski">
 </datalist>
+<datalist id="contactsList">
+  @foreach ($users as $user)
+  <option value="{{$user->name}}">
+    @endforeach
+</datalist>
 
 <datalist id="months">
   <option value="1">
@@ -808,4 +834,33 @@ function showEvents($tutorEvent,$day,$choosedMonth,$choosedYear){
   <option value="2026">
   <option value="2027">
 </datalist>
+<input id="monthContainer" type="text" hidden value="{{$choosedMonth}}">
+<input id="yearContainer" type="text" hidden value="{{$choosedYear}}">
+<script>
+  $('#addEventButton1').click(function(){
+    $('.add-event-container').show();
+    $('#addEventButton1').hide();
+    $('#addEventButton2').show();
+    });
+    $('#addEventButton2').click(function(){
+    $('.add-event-container').hide();
+    $('#addEventButton1').show();
+    $('#addEventButton2').hide();
+    });
+$('select#monthFilter,select#yearFilter').change(function(){
+    var monthFilterValue = $("select#monthFilter").val();
+    var yearFilterValue = $("select#yearFilter").val();
+    var url = "http://localhost:8000/"+"calendar/"+monthFilterValue+"/"+yearFilterValue;
+    window.location = url;
+    });
+
+  var monthContainer = $('#monthContainer').val();
+    var yearContainer = $('#yearContainer').val();
+
+    $('#monthFilter option[value='+monthContainer+']').attr("selected",true);
+    $('#yearFilter option[value='+yearContainer+']').attr("selected",true);
+
+
+
+</script>
 @endsection

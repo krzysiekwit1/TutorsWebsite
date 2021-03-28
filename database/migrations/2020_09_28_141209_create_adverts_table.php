@@ -34,7 +34,7 @@ class CreateAdvertsTable extends Migration
             $table->string('city',20)->nullable();
 
             $table->longText('description');
-            $table->foreignId('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
             
         });

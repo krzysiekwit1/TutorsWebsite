@@ -27,12 +27,47 @@
     </div>
     <div class="col-md-8 col-xl-8">
       <div class="personal-information row">
+
+
+
+
+
+
+
+
         <div class="information col-md-4 col-xl-4">
           Name:
         </div>
-        <div class="informationInput col-md-8 col-xl-8">
-          <p>{{$user->name}}</p>
+        <div class="informationInput col-md-4 col-xl-4">
+          <p id="userName">{{$user->name}}</p>
+          <input id="userNameInputChange" type="text">
+
         </div>
+        <div class="col-md-4 col-xl-4">
+          <div style="margin-top:0px;" class="row">
+            <div id="userNameChangeLoading" class="loading-dual-ring"></div>
+            <div style="display:none;" id="userNameChangeSuccess" class="isTutorSuccess">Done!
+            </div>
+            <div style="display:none;" id="userNameChangeError" class="isTutorError">Error</div>
+
+            <input style="margin-left:113px;" value="Change" type="button" class="update-button btn btn-sm float-right"
+              id="userNameChangeButton">
+            <input style="display:none;margin-left:113px;" value="Accept" type="button"
+              class="update-button btn btn-sm " id="userNameChangeAcceptButton">
+          </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
         <div class="information col-md-4 col-xl-4">
           Email:
         </div>
@@ -94,6 +129,32 @@
           </form>
         </div>
       </div>
+
+
+      <div class="row">
+        <div id="changePasswordInformation" class="information col-md-4 col-xl-4">
+          Change your password:
+        </div>
+        <div class="col-md-8 col-xl-8">
+          <form action="">
+            <div class="row">
+              <div class="col-md-8 col-xl-8">
+                <div class="changePasswordElementsContainer">
+                  <div style="margin-top:0px;" class="row">
+                    <input style="margin-bottom:5px;" id="oldPassword" type="text" placeholder="old password">
+                    <input style="margin-bottom:5px;" id="newPassword" type="text" placeholder="new password">
+                    <input style="margin-bottom:5px;" id="newPasswordConfirmation" type="text"
+                      placeholder="new password">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-xl-4">
+                <input value="Change password" type="button" class="update-button btn btn-sm" id="changePasswordButton">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -103,8 +164,114 @@
 
 
 </div>
+<div style="margin-top:25px;border-top:solid 1px black;" class="container">
+  <p style="margin-left:15px;margin-bottom:15px;">Your Contact list</p>
+  <div class="col-xl-12 col-md-12">
+    @foreach ($users as $contact)
+    <div class="row">
+      <div style="height:75px;" class="col-xl-2 col-md-2">
+        <img src="{{asset('/'.$contact->avatar)}}" alt="Avatar" style="height:75px;" class="img-fluid">
+      </div>
+      <div class="col-xl-3 col-md-3">
+        <p class="name">{{$contact->name}}</p>
+        <p class="email">{{$contact->email}}</p>
+      </div>
+      <div id="{{$contact->id}}" class="col-xl-3 col-md-3">
+        <input value="Contact" type="button" class="contactButton update-button btn btn-sm" id="">
+        <input value="Delete" type="button" class="deleteButton update-button btn btn-sm" id="{{$contact->id}}">
+      </div>
+    </div>
+    @endforeach
+  </div>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+  $('.contactButton').click(function(){
+window.location.href = 'http://localhost:8000/chat';
+  });
+  //Deleting contact function
+  $('.deleteButton').click(function(){
+    var Thisdeletebutton = this;
+    var id = this.id;
+    console.log('id to '+ id);
+    $.ajaxSetup({
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
+    var data ={
+    'id':id
+    };
+    $.ajax({
+    type: "POST",
+    url: '/profile/deletecontact',
+    data: data,
+      success: function(data){
+      if(data.result=='success'){
+        $(Thisdeletebutton).closest(".row").hide();
+      };
+    },
+      error: function(data){
+        console.log('contact to administration');
+      },
+    });
+  });
+  //firstname and lastname update
+$('#userNameChangeButton').click(function(){
+$('#userName').hide();
+$('#userNameInputChange').show();
+  $('#userNameChangeButton').hide();
+  $('#userNameChangeAcceptButton').show();
+});
+$('#userNameChangeAcceptButton').click(function(){
+  $('#userNameChangeLoading').show();
+$.ajaxSetup({
+  headers: {
+  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+  });
+
+var userNameNewName = $("#userNameInputChange").val();
+
+var data ={
+  'username':userNameNewName
+  };
+
+$.ajax({
+type: "POST",
+url: '/profile/userNameUpdate',
+data: data,
+success: successFunc,
+error: errorFunc
+});
+//function on ajax succes
+function successFunc(result)
+  {
+    console.log(result.result);
+
+    $('#userNameInputChange').hide();
+    $('#userNameInputChange').val('');
+    $('#userName').show();
+    $('#userName').html(result.result);
+    $('#userNameChangeAcceptButton').hide();
+    $('#userNameChangeButton').show();
+    $("#userNameChangeLoading").css("display", "none");
+        $("#userNameChangeSuccess").show(0).delay(3000).hide(0);
+  }
+//function oj ajax error
+function errorFunc()
+  {
+    ("#userNameChangeError").css("display", "block");
+  }
+
+});
+
+
+
+
+
+
+
   //emulate click on hidden input
   $('#avatarInputP').click( function(){
     $('#avatarInput').click();
@@ -207,7 +374,6 @@ data: data,
 success: function(data){
   if(data.result=='success'){
       console.log(data);
-      console.log('twoja stara');
       successFunc();
   }else{
     console.log('succes ale error');

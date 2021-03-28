@@ -84,7 +84,7 @@
                                     Advert</a>
                                 @endif
                                 <a class="dropdown-item" href="/chat">Chat</a>
-                                <a class="dropdown-item" href="/calendar/10/2020">Calendar</a>
+                                <a class="dropdown-item" href="/calendar/{{date('m')}}/{{date('Y')}}">Calendar</a>
                                 <a class="dropdown-item" href="/userpanel">Profile</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">

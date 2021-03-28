@@ -18,7 +18,7 @@ body {
 #sortBy,
 #filterByLanguage,
 #filterByLocation,
-#filterByCity {
+#filterByCity #filterByName {
     margin-right: 15px;
     margin-top: 5px;
     border-radius: 5px;

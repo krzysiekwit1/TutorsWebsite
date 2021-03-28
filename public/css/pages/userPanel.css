@@ -30,6 +30,7 @@ body {
     background: #494d5f;
     color: white;
 }
+
 .row {
     margin-top: 10px;
 }
@@ -151,6 +152,40 @@ input:checked + .slider:before {
     background: #8458b3;
     color: white;
 }
+.deleteButton {
+    border: 1px solid rgb(246, 12, 12);
+    width: 150px;
+    height: 27.6px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 13px;
+    margin-top: 0px;
+    display: block;
+    margin-left: 15px;
+    margin-top: 3px;
+}
+.deleteButton:hover {
+    cursor: pointer;
+    background: rgb(246, 12, 12);
+    color: white;
+}
+.contactButton {
+    border: 1px solid rgb(32, 146, 32);
+    width: 150px;
+    height: 27.6px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 13px;
+    margin-top: 0px;
+    display: block;
+    margin-left: 15px;
+    margin-top: 3px;
+}
+.contactButton:hover {
+    cursor: pointer;
+    background: rgb(32, 146, 32);
+    color: white;
+}
 @keyframes lds-dual-ring {
     0% {
         transform: rotate(0deg);
@@ -194,6 +229,12 @@ input:checked + .slider:before {
     border-radius: 5px;
     padding: 0px;
     width: 140px;
+}
+
+#userNameInputChange {
+    display: none;
+}
+#userNameChangeButton {
 }
 @media screen and (max-width: 600px) {
     .isTutorElementsContainer {

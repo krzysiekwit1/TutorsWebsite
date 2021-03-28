@@ -37,33 +37,65 @@ class calendarController extends Controller
         ->select('users.name','events.id','events.accepted','events.start','events.end','events.platform','events.language')->get();
 
 
-        /*->join('users','events.user_id_1','=','users.id')
-        ->orjoin('user','events.user_id_2','=','users.id')
-        ->where('event.user_id1',$userid)
-        ->orwhere()
-        ->select('users.name','messages.title','messages.text','messages.id')
+// CONTACTS HERE
+        $my_id=Auth::user()->id;
+
+        $usersList1 = DB::table('contacts')
+        ->where('user_id_1','=',$my_id)
         ->get();
-\
-*/
+        $usersList1 = $usersList1
+        ->pluck('user_id_2')
+        ->toArray();
+
+        $usersList2 = DB::table('contacts')
+        ->where('user_id_2','=',$my_id)
+        ->get();
+        $usersList2 = $usersList2
+        ->pluck('user_id_1')
+        ->toArray();
+
+        $finalUsersList = array_merge($usersList1, $usersList2);
+
+        $users = User::select('name')
+        ->whereIn('id', $finalUsersList)
+        ->get();
+        $zero = 0;
+        $users =DB::table('users')
+        ->select(DB::raw('users.name,users.id'))
+        ->leftJoin('messages',function($join) use ($my_id){
+            $join->on('from','=','users.id');
+            $join->on('to','=',DB::raw($my_id));
+            $join->on('is_read','=',DB::raw(0));
+        })
+        ->whereIn('users.id', $finalUsersList)
+        ->groupBy('users.id')
+        ->get();
+
+
+        
+        
+        
         return view('calendar/calendar')
         ->with('studentEvents',$studentEvents)
         ->with('tutorEvents',$tutorEvents)
         ->with('numberOfDays',$numberOfDays)
         ->with('choosedMonth',$month)
-        ->with('choosedYear',$year);
+        ->with('choosedYear',$year)
+        ->with('users',$users);
+
+        
     }
     public function store(Request $request){
         $this->validate($request,[
-        'email'=>['required','exists:mysql.users,email'],
+        'email'=>['required','exists:mysql.users,id'],
         'start'=>'required',
         'end'=>'required',
         'language'=>'required'
         ]);
         if($request->start>$request->end){
-            return redirect()->back()->with('error','Data początkowa nie może być po końcowej');
+            return redirect()->back()->with('error','Start cannot be after end');
         }
-        $id = User::where('email',$request->email)->first()->id;
-
+        $id = $request->email;
         $event = new Event;
         $event->language =$request->input('language');
         $event->platform =$request->input('platform');
@@ -76,7 +108,11 @@ class calendarController extends Controller
 
         $event->save();
 
-        return redirect('/calendar/10/2020')->with('success','Dodałeś zajęcia');
+        $todayMonth = date('m');
+        $todayYear = date('Y');
+
+
+        return redirect('/calendar/'.$todayMonth .'/'.$todayYear)->with('success','You added lesson');
 
 
 

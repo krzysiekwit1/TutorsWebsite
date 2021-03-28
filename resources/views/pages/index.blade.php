@@ -88,7 +88,8 @@
                 <option value="Ukraine">Ukraine</option>
                 <option value="Vietnam">Vietnam</option>
             </select>
-            <input type="text" id="filterByCity">
+            <input style="margin-top:5px;" placeholder="City" type="text" id="filterByCity">
+            <input style="margin-left:5px;margin-top:5px;" placeholder="Find" type="text" id="filterByName">
         </div>
     </div>
 </div>
@@ -241,7 +242,8 @@
     </div>
 
     @endforeach
-
+</div>
+<div style="margin-top:15px;" class="d-flex justify-content-center"> {{ $adverts->links() }}
 </div>
 @else
 <p>there is no adverts</p>
@@ -274,7 +276,7 @@
     console.log(filterLanguage);
     console.log(filterLocation);
     console.log(filterCity);
-    if(filterCity==""){
+    if(filterCity=="filter by city"){
         filterCity = "none";
     }
     var url = "http://localhost:8000/"+"filter/"+sortBy+"/"+filterLanguage+"/"+filterLocation+"/"+filterCity;
@@ -323,7 +325,7 @@
                         $(parentElementThis).find("i:eq(3)").css('display','inline');
                         $(parentElementThis).find("i:eq(4)").css('display','inline');
                         $(parentElementThis).find(".rating-title").text("Rating: " + data.result);                   
-                            }else if(data.result > 2 && data.result <= 3){
+                            }else if(data.result >= 2 && data.result < 3){
                         $(parentElementThis).find(".loading-dual-ring").css('display','none');
                         $(parentElementThis).find("i:eq(0)").css('display','inline');
                         $(parentElementThis).find("i:eq(0)").addClass( "fas" );
@@ -333,7 +335,7 @@
                         $(parentElementThis).find("i:eq(3)").css('display','inline');
                         $(parentElementThis).find("i:eq(4)").css('display','inline');
                         $(parentElementThis).find(".rating-title").text("Rating: " + data.result);                  
-                            }else if(data.result > 3 && data.result <= 4){
+                            }else if(data.result >= 3 && data.result < 4){
                         $(parentElementThis).find(".loading-dual-ring").css('display','none');
                         $(parentElementThis).find("i:eq(0)").css('display','inline');
                         $(parentElementThis).find("i:eq(0)").addClass( "fas" );
@@ -345,7 +347,7 @@
                         $(parentElementThis).find("i:eq(4)").css('display','inline');
                         $(parentElementThis).find(".rating-title").text("Rating: " + data.result);
 
-                            }else if(data.result > 4 && data.result < 5){
+                            }else if(data.result >= 4 && data.result < 5){
                         $(parentElementThis).find(".loading-dual-ring").css('display','none');
                         $(parentElementThis).find("i:eq(0)").css('display','inline');
                         $(parentElementThis).find("i:eq(0)").addClass( "fas" );

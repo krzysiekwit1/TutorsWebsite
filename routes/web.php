@@ -44,7 +44,9 @@ Route::post('/getrating','RatingController@getRating');
 Route::get('/filter/{sort?}/{language?}/{country?}/{city?}','PagesController@sort');
 Route::get('/SignUp','PagesController@SignUp');
 
+
 Route::group([ 'middleware' => [ 'auth', 'verified' ] ], function () {
+
 
 Route::get('/calendar/{month}/{year}','CalendarController@calendar');
 Route::post('/calendar/{month?}/{year?}','CalendarController@store');
@@ -60,6 +62,11 @@ Route::get('/chat','ChatController@index');
 //Route::get('/mailbox/show/{id}','MailboxController@showSpecificMail');
 Route::get('/userpanel','UserController@index');
 Route::post('/userpanel','UserController@update_avatar');
+Route::post('/profile/deletecontact','UserController@deleteContact');
+
+
+Route::post('/profile/userNameUpdate','UserController@userNameUpdate');
+
 Route::post('/profile/istutorupdate','UserController@isTutorUpdate');
 Route::post('/profile/birthdateupdate','UserController@birthDateUpdate');
 

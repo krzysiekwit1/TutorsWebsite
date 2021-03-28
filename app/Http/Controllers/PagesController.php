@@ -11,6 +11,7 @@ use Log;
 use Event;
 
 
+
 class PagesController extends Controller
 {
     public function index(){
@@ -19,7 +20,8 @@ class PagesController extends Controller
         ->join('users','adverts.user_id','=','users.id')
         ->select ('adverts.*','users.avatar')
         
-        ->get(); 
+        ->simplePaginate(10);
+
         return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
 
         $adverts = Advert::all();
@@ -73,7 +75,7 @@ public function sort($sort , $language, $country, $city){
                                 })
                             ->select ('adverts.*','users.avatar')
                             ->orderBy('adverts.price','DESC')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
 
                     }else if($city == 'none'){
@@ -89,7 +91,7 @@ public function sort($sort , $language, $country, $city){
                                 })
                             ->select ('adverts.*','users.avatar')
                             ->orderBy('adverts.price','DESC')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
 
 
@@ -112,7 +114,7 @@ public function sort($sort , $language, $country, $city){
                             })
                             ->select ('adverts.*','users.avatar')
                             ->orderBy('adverts.price','DESC')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
 
                     }else if($city == 'none'){
@@ -127,7 +129,7 @@ public function sort($sort , $language, $country, $city){
                             })
                             ->select ('adverts.*','users.avatar')
                             ->orderBy('adverts.price','DESC')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
 
                     }
@@ -145,7 +147,7 @@ public function sort($sort , $language, $country, $city){
                             })
                             ->select ('adverts.*','users.avatar')
                             ->orderBy('adverts.price','DESC')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
 
                     }else if($city == 'none'){
@@ -154,7 +156,7 @@ public function sort($sort , $language, $country, $city){
                             ->where('adverts.country', $country)
                             ->select ('adverts.*','users.avatar')
                             ->orderBy('adverts.price','DESC')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
 
                     }
@@ -167,14 +169,14 @@ public function sort($sort , $language, $country, $city){
                             })
                             ->select ('adverts.*','users.avatar')
                             ->orderBy('adverts.price','DESC')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
                     }else if($city == 'none'){
                             $adverts=DB::table('adverts')
                             ->join('users','adverts.user_id','=','users.id')
                             ->select ('adverts.*','users.avatar')
                             ->orderBy('adverts.price','DESC')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
                     }
                 }
@@ -199,7 +201,7 @@ public function sort($sort , $language, $country, $city){
                             })
                             ->select ('adverts.*','users.avatar')
                             ->orderBy('adverts.price','ASC')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
                     }else if($city == 'none'){
                                                     $adverts=DB::table('adverts')
@@ -214,7 +216,7 @@ public function sort($sort , $language, $country, $city){
                                 })
                             ->select ('adverts.*','users.avatar')
                             ->orderBy('adverts.price','ASC')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
                     }
                 }else if (checkCountry($country)== false){
@@ -233,7 +235,7 @@ public function sort($sort , $language, $country, $city){
                                 })
                             ->select ('adverts.*','users.avatar')
                             ->orderBy('adverts.price','ASC')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
                     }else if($city == 'none'){
                             $adverts=DB::table('adverts')
@@ -247,7 +249,7 @@ public function sort($sort , $language, $country, $city){
                             })
                             ->select ('adverts.*','users.avatar')
                             ->orderBy('adverts.price','ASC')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
                     }
                 }
@@ -262,7 +264,7 @@ public function sort($sort , $language, $country, $city){
                             })
                             ->select ('adverts.*','users.avatar')
                             ->orderBy('adverts.price','ASC')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
                     }else if($city == 'none'){
                             $adverts=DB::table('adverts')
@@ -270,7 +272,7 @@ public function sort($sort , $language, $country, $city){
                             ->where('adverts.country', $country)
                             ->select ('adverts.*','users.avatar')
                             ->orderBy('adverts.price','ASC')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
                     }
                 }else if (checkCountry($country)== false){
@@ -282,14 +284,14 @@ public function sort($sort , $language, $country, $city){
                             })
                             ->select ('adverts.*','users.avatar')
                             ->orderBy('adverts.price','ASC')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
                     }else if($city == 'none'){
                             $adverts=DB::table('adverts')
                             ->join('users','adverts.user_id','=','users.id')
                             ->select ('adverts.*','users.avatar')
                             ->orderBy('adverts.price','ASC')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
                     }
                 }
@@ -312,7 +314,7 @@ public function sort($sort , $language, $country, $city){
                             $q->where('adverts.city', $city);
                             })
                             ->select ('adverts.*','users.avatar')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
                     }else if($city == 'none'){
                                                     $adverts=DB::table('adverts')
@@ -326,7 +328,7 @@ public function sort($sort , $language, $country, $city){
                             ->orWhere('adverts.language_5', $language);
                             })
                             ->select ('adverts.*','users.avatar')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
                     }
                 }else if (checkCountry($country)== false){
@@ -342,7 +344,7 @@ public function sort($sort , $language, $country, $city){
                             ->orWhere('adverts.language_5', $language);
                             })
                             ->select ('adverts.*','users.avatar')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
                     }else if($city == 'none'){
                                                     $adverts=DB::table('adverts')
@@ -355,7 +357,7 @@ public function sort($sort , $language, $country, $city){
                             ->orWhere('adverts.language_5', $language);
                             })
                             ->select ('adverts.*','users.avatar')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
                     }
                 }
@@ -369,14 +371,14 @@ public function sort($sort , $language, $country, $city){
                             $q->where('adverts.city', $city);
                             })
                             ->select ('adverts.*','users.avatar')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
                     }else if($city == 'none'){
                             $adverts=DB::table('adverts')
                             ->join('users','adverts.user_id','=','users.id')
                             ->where('adverts.country', $country)
                             ->select ('adverts.*','users.avatar')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
                     }
                 }else if (checkCountry($country)== false){
@@ -387,13 +389,13 @@ public function sort($sort , $language, $country, $city){
                             $q->where('adverts.city', $city);
                             })
                             ->select ('adverts.*','users.avatar')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
                     }else if($city == 'none'){
                             $adverts=DB::table('adverts')
                             ->join('users','adverts.user_id','=','users.id')
                             ->select ('adverts.*','users.avatar')
-                            ->get(); 
+                            ->simplePaginate(10); 
                             return view('pages/index')->with('adverts',$adverts)->with('filterArray',$filterArray);
                     }
                 }
