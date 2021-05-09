@@ -6,7 +6,7 @@
 
 ## General info
 
-Website which allows users to advertise tutors servies and allows to contact in real time. Website views created in blade, php , html, css.
+Website which allows users to advertise tutors services and allows to contact in real time. Website views created in blade, php , html, css.
 Database in MySQL.
 
 ## Technologies
